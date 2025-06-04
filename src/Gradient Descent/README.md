@@ -1,62 +1,22 @@
-### 🔍 Problem Overview:
+# Gradient Descent
 
-We want to **find the value of `x` that minimizes the function**
-    → **f(x) = x²**
-The minimum value of this function is at **x = 0**, because squaring any other number gives a higher value.
+Let’s take a simple example of an equation, $F(X_1, X_2) = W_1*X_1 + W_2*X_2$. If we find the partial derivative of $W_1$ or $W_2$ with respect to $F$, we can find out how $W_1$ or $W_2$ can affect $F$.
 
-We’ll use **gradient descent**, a popular optimization algorithm, to get there.
+If the partial derivative of $W_1$ with respect to $F$ is POSITIVE, that means DECREASING $W_1$ will DECREASE $F$.
 
----
+If the partial derivative of $W_1$ with respect to $F$ is NEGATIVE, that means INCREASING $W_1$ will DECREASE $F$.
 
-### 📘 Concept of Gradient Descent:
+<img src="./assets/gd.png" width="400">
+<br>
 
-Gradient Descent is like **going down a hill** to find the **lowest point** (the minimum).
+So if we want to minimise the value of $F$ by changing $W_1$, we will update $W_1$ as follows based on the above inference :
 
-* Imagine you're standing somewhere on the curve `f(x) = x²`, and you want to reach the bottom (x = 0).
-* The **slope** at your current position tells you which direction to move.
-* You take small steps in the **opposite direction of the slope** to go downhill.
-* The **learning rate** decides how big your step is.
-
----
-
-### 🧠 For f(x) = x²:
-
-* Its derivative (or slope) is:
-      → f'(x) = 2x
-* So, to update `x` in each step, we use:
-      → `x = x - learning_rate * 2x`
-
----
-### 🧪 Example Walkthrough:
-
-Let’s say:
-
-* `init = 10`
-* `learning_rate = 0.1`
-* `iterations = 100`
-
-Then in each step:
-
-* Compute slope = 2 × x
-* Update x = x - (0.1 × slope)
-
-Eventually, `x` will become very close to **0**, which is the minimum of f(x).
-
-<img src="./assets/visualisation.png" width="400">
-
-Here's a visualization of how gradient descent works on the function **f(x) = x²**:
-
-* The **blue curve** shows the function f(x) = x².
-* The **red dots** trace the path of `x` as it moves closer to the minimum (x = 0) with each step.
-* You can see the steps get smaller as we approach the bottom — a key behavior of gradient descent.
-
-Let me know if you want to change the learning rate or initial value to see different behaviors!
-
----
-
-### 🎯 Key Takeaways:
-
-* **Gradient descent** repeatedly moves in the direction of steepest decrease.
-* The **learning rate** must be chosen carefully — too small means slow, too big might skip over the minimum.
-* Works best when the function is smooth and differentiable, like x².
-
+> $W_1$ = $W_1$ - (partial_derivative * learning_rate)
+>
+> The learning is rate is a small positive integral parameter which will determine by how much we are decreasing $W_1$.
+>
+> If partial derivative is +ve the above equation decreases $W_1$ 
+>
+> If partial derivative is -ve the above equation increases $W_1$ 
+>
+> Ultimately decreasing the value of $F$ in all cases
